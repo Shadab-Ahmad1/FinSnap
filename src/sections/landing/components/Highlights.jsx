@@ -175,7 +175,7 @@ export default function Highlights() {
         py: { xs: 4, sm: 6 },
       }}
     >
-      <Container sx={{ position: 'relative' }}>
+      <Container id="highlights" sx={{ position: 'relative' }}>
         <Typography
           component="h2"
           variant="h3"

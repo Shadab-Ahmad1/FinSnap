@@ -85,6 +85,11 @@ export default function AppAppBar() {
                     Highlights
                   </Button>
                 </ScrollLink>
+                <ScrollLink to="ComingSoon" smooth duration={500} offset={-70}>
+                  <Button variant="text" color="info" size="medium" sx={{ fontSize: '1.1rem' }}>
+                    Coming Soon
+                  </Button>
+                </ScrollLink>
                 <ScrollLink to="faq" smooth duration={500} offset={-70}>
                   <Button variant="text" color="info" size="medium" sx={{ fontSize: '1.1rem' }}>
                     FAQ

@@ -142,7 +142,7 @@ export default function ComingSoon() {
   ];
 
   return (
-    <Box sx={{ bgcolor: 'rgb(0, 41, 82)', pt: 8, pb: '90px', marginTop: '50px' }}>
+    <Box sx={{ bgcolor: 'rgb(0, 41, 82)', pt: 8, pb: '90px', marginTop: '50px' }} id="ComingSoon">
       <Box sx={{ maxWidth: 'lg', mx: 'auto', px: 3 }}>
         <Typography
           variant="h1"
