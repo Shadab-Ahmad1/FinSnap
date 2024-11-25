@@ -225,7 +225,7 @@ export default function Highlights() {
               left: 0,
               width: '2px',
               height: `${progress}%`,
-              backgroundColor: 'blue',
+              backgroundColor: '#52bc52',
               transition: 'height 0.1s ease-out',
             }}
           />
@@ -241,8 +241,8 @@ export default function Highlights() {
                   width: isReached ? '24px' : '16px',
                   height: isReached ? '24px' : '16px',
                   borderRadius: '50%',
-                  backgroundColor: isReached ? 'blue' : 'white',
-                  border: '2px solid blue',
+                  backgroundColor: isReached ? '#52bc52' : 'white',
+                  border: '2px solid #52bc52',
                   position: 'absolute',
                   top: `${position}%`,
                   left: '50%',

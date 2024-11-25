@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Grid, Card, CardContent, LinearProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
-import { Share2, MessageSquare, Mic } from 'lucide-react'; // Adjusted imports for icons
+import { Share2, MessageSquare, Mic } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 // Styled components
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -141,52 +142,62 @@ export default function ComingSoon() {
     },
   ];
 
-  return (
-    <Box sx={{ bgcolor: 'rgb(0, 41, 82)', pt: 8, pb: '90px', marginTop: '50px' }} id="ComingSoon">
-      <Box sx={{ maxWidth: 'lg', mx: 'auto', px: 3 }}>
-        <Typography
-          variant="h1"
-          component="h1"
-          align="center"
-          sx={{
-            mb: 2,
-            color: '#52bc52',
-            fontSize: { xs: '2rem', md: '3rem' },
-            fontWeight: 700,
-          }}
-        >
-          Coming Soon
-        </Typography>
-        <Typography
-          variant="h6"
-          component="p"
-          align="center"
-          sx={{
-            color: '#fff',
-            maxWidth: 'md',
-            mx: 'auto',
-            fontSize: '1rem',
-            fontWeight: '400',
-          }}
-        >
-          We&apos;re constantly innovating to bring you better market insights.
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          sx={{ mb: 8, color: '#fff', fontSize: '1rem', fontWeight: '400' }}
-        >
-          Here&apos;s what&apos;s on our roadmap.
-        </Typography>
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
 
-        <Grid container spacing={4}>
-          {features.map((feature) => (
-            <Grid item xs={12} md={4} key={feature.title}>
-              <FeatureCard {...feature} />
-            </Grid>
-          ))}
-        </Grid>
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
+
+  return (
+    <motion.div ref={containerRef} style={{ scale }} initial={{ scale: 0.8 }}>
+      <Box sx={{ bgcolor: 'rgb(0, 41, 82)', pt: 8, pb: '90px', marginTop: '50px' }} id="ComingSoon">
+        <Box sx={{ maxWidth: 'lg', mx: 'auto', px: 3 }}>
+          <Typography
+            variant="h1"
+            component="h1"
+            align="center"
+            sx={{
+              mb: 2,
+              color: '#52bc52',
+              fontSize: { xs: '2rem', md: '3rem' },
+              fontWeight: 700,
+            }}
+          >
+            Coming Soon
+          </Typography>
+          <Typography
+            variant="h6"
+            component="p"
+            align="center"
+            sx={{
+              color: '#fff',
+              maxWidth: 'md',
+              mx: 'auto',
+              fontSize: '1rem',
+              fontWeight: '400',
+            }}
+          >
+            We&apos;re constantly innovating to bring you better market insights.
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            sx={{ mb: 8, color: '#fff', fontSize: '1rem', fontWeight: '400' }}
+          >
+            Here&apos;s what&apos;s on our roadmap.
+          </Typography>
+
+          <Grid container spacing={4}>
+            {features.map((feature) => (
+              <Grid item xs={12} md={4} key={feature.title}>
+                <FeatureCard {...feature} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 }
